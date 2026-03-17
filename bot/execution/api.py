@@ -4,6 +4,7 @@ import hashlib
 import requests
 import os
 from dotenv import load_dotenv
+from logger import logger
 
 load_dotenv()
 
@@ -26,7 +27,7 @@ class APIClient:
             res.raise_for_status()
             return res.json()
         except requests.exceptions.RequestException as e:
-            print(f"Error getting exchange info: {e}")
+            logger.error(f"Error getting exchange info: {e}")
             return None
 
     def _get_signed_headers(self, payload: dict = {}):
@@ -63,7 +64,7 @@ class APIClient:
             res.raise_for_status()
             return res.json()
         except requests.exceptions.RequestException as e:
-            print(f"Error getting ticker: {e}")
+            logger.error(f"Error getting ticker: {e}")
             return None
 
     def get_balance(self):
@@ -75,7 +76,7 @@ class APIClient:
             res.raise_for_status()
             return res.json()
         except requests.exceptions.RequestException as e:
-            print(f"Error getting balance: {e}")
+            logger.error(f"Error getting balance: {e}")
             return None
 
     def place_order(self, coin, side, quantity, price=None, order_type=None):
@@ -101,11 +102,54 @@ class APIClient:
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
 
         try:
-            print(f"Sending request to url={url}")
+            logger.info(f"Sending request to url={url}")
             res = requests.post(url, headers=headers, data=total_params)
             res.raise_for_status()
-            print(res.json())
+            logger.info(res.json())
             return res.json()
         except requests.exceptions.RequestException as e:
-            print(f"Error placing order: {e}")
+            logger.error(f"Error placing order: {e}")
             return None
+
+    def get_total_portfolio_value(self):
+        """
+        Calculate total wallet value in USD by fetching balances and current market prices.
+        Returns a tuple: (total_value_usd, held_coins_list)
+        held_coins_list is a list of tuples: (coin, quantity)
+        """
+        balances = self.get_balance()
+        if not balances or not balances.get('Success'):
+            logger.error("Error: Could not fetch balances for portfolio valuation.")
+            return None, []
+
+        tickers = self.get_ticker()
+        if not tickers or not tickers.get('Success'):
+            logger.error("Error: Could not fetch tickers for portfolio valuation.")
+            return None, []
+
+        spot_wallet = balances.get('SpotWallet', {})
+        ticker_data = tickers.get('Data', {})
+        
+        total_value = 0.0
+        held_coins = []
+
+        for coin, qty_info in spot_wallet.items():
+            total_qty = float(qty_info.get('Free', 0)) + float(qty_info.get('Lock', 0))
+            if total_qty <= 0:
+                continue
+
+            held_coins.append((coin, total_qty))
+
+            if coin == 'USD':
+                total_value += total_qty
+            else:
+                pair_name = f"{coin}/USD"
+                # Handle cases where the ticker might be missing or under a different name
+                price_info = ticker_data.get(pair_name)
+                if price_info:
+                    last_price = float(price_info.get('LastPrice', 0))
+                    total_value += total_qty * last_price
+                else:
+                    logger.warning(f"Warning: Price for {coin} ({pair_name}) not found in tickers.")
+
+        return total_value, held_coins
