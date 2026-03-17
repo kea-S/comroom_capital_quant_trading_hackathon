@@ -17,6 +17,18 @@ class APIClient:
         """Return a 13-digit millisecond timestamp as string."""
         return str(int(time.time() * 1000))
 
+    def get_exchange_info(self):
+        """Get exchange information including precision for all pairs."""
+        url = f"{self.base_url}/v3/exchangeInfo"
+        params = {'timestamp': self._get_timestamp()}
+        try:
+            res = requests.get(url, params=params)
+            res.raise_for_status()
+            return res.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error getting exchange info: {e}")
+            return None
+
     def _get_signed_headers(self, payload: dict = {}):
         """
         Generate signed headers and totalParams for endpoints.

@@ -14,6 +14,8 @@ class StrategyRunner:
         self.api = APIClient()
         self.strategy = Strategy()
         self.data_handler = DataHandler()
+        self.precisions = {}
+        self._init_precisions()
         
         if config_path:
             self.load_config(config_path)
@@ -51,10 +53,50 @@ class StrategyRunner:
         
         print(f"Loaded config from {path}: {len(self.pairs)} pairs found.")
 
+    def _init_precisions(self):
+        """Fetch and store Price/Amount precision for all pairs from Roostoo."""
+        info = self.api.get_exchange_info()
+        if info and info.get("IsRunning"):
+            trade_pairs = info.get("TradePairs", {})
+            for pair_name, details in trade_pairs.items():
+                self.precisions[pair_name] = {
+                    "price": details.get("PricePrecision", 8),
+                    "amount": details.get("AmountPrecision", 8)
+                }
+            print(f"Initialized precisions for {len(self.precisions)} coins.")
+        else:
+            print("Warning: Failed to initialize precisions from Roostoo API.")
+
+    def round_to_precision(self, value, precision):
+        """Round a value to a specified number of decimal places."""
+        if value is None:
+            return None
+        return round(float(value), precision)
+
+    def get_current_ask(self, coin):
+        """Fetch the current minimum ask price for a coin from Roostoo."""
+        ticker = self.api.get_ticker(coin)
+        if ticker and ticker.get("Success"):
+            pair_name = f"{coin}/USD"
+            data = ticker.get("Data", {}).get(pair_name, {})
+            return data.get("MinAsk")
+        return None
+
     def buy(self, pair: Pair, coin, quantity):
-        """Place a buy order for a coin within a pair."""
-        print(f"[{pair}] Executing BUY for {coin}, quantity={quantity}")
-        res = self.api.place_order(coin, "BUY", quantity)
+        """Place a limit buy order for a coin within a pair at the current ask price."""
+        price = self.get_current_ask(coin)
+        if price is None:
+            print(f"[{pair}] Failed to fetch ask price for {coin}, skipping BUY.")
+            return False
+
+        pair_name = f"{coin}/USD"
+        precision = self.precisions.get(pair_name, {"amount": 8, "price": 8})
+        
+        rounded_qty = self.round_to_precision(quantity, precision["amount"])
+        rounded_price = self.round_to_precision(price, precision["price"])
+        
+        print(f"[{pair}] Executing LIMIT BUY for {coin}, quantity={rounded_qty}, price={rounded_price}")
+        res = self.api.place_order(coin, "BUY", rounded_qty, price=rounded_price, order_type="LIMIT")
         if res and res.get("Success"):
             entry_price = res["OrderDetail"].get("Price")
             pair.set_position(coin, entry_price)
@@ -62,9 +104,20 @@ class StrategyRunner:
         return False
 
     def sell(self, pair: Pair, coin, quantity):
-        """Place a sell order for a coin within a pair."""
-        print(f"[{pair}] Executing SELL for {coin}, quantity={quantity}")
-        res = self.api.place_order(coin, "SELL", quantity)
+        """Place a limit sell order for a coin within a pair at the current ask price."""
+        price = self.get_current_ask(coin)
+        if price is None:
+            print(f"[{pair}] Failed to fetch ask price for {coin}, skipping SELL.")
+            return False
+
+        pair_name = f"{coin}/USD"
+        precision = self.precisions.get(pair_name, {"amount": 8, "price": 8})
+        
+        rounded_qty = self.round_to_precision(quantity, precision["amount"])
+        rounded_price = self.round_to_precision(price, precision["price"])
+        
+        print(f"[{pair}] Executing LIMIT SELL for {coin}, quantity={rounded_qty}, price={rounded_price}")
+        res = self.api.place_order(coin, "SELL", rounded_qty, price=rounded_price, order_type="LIMIT")
         if res and res.get("Success"):
             pair.reset_position()
             return True

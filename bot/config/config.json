@@ -7,70 +7,64 @@
   },
   "trading_pairs": [
     {
-      "coin_a": "IMX",
-      "coin_b": "SKL",
-      "window_size": 720,
-      "allocated_capital": 45454
-    },
-    {
       "coin_a": "AVAX",
       "coin_b": "XRP",
       "window_size": 720,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "CRV",
       "coin_b": "LDO",
       "window_size": 720,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "BTC",
       "coin_b": "SOL",
       "window_size": 360,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "BTC",
       "coin_b": "ETH",
       "window_size": 720,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "BTC",
       "coin_b": "BNB",
       "window_size": 360,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "DOT",
       "coin_b": "NEAR",
       "window_size": 360,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "XRP",
       "coin_b": "DOGE",
       "window_size": 720,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "AVAX",
       "coin_b": "DOGE",
       "window_size": 720,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "NEAR",
       "coin_b": "AVAX",
       "window_size": 360,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     },
     {
       "coin_a": "NEAR",
       "coin_b": "DOGE",
       "window_size": 360,
-      "allocated_capital": 45454
+      "allocated_capital": 4000
     }
   ]
 }
