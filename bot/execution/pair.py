@@ -37,11 +37,21 @@ class Pair():
     """
     Getter and setter for current position
     """
-    def get_position(self):
-        return self.position
+    def get_position_ticker(self):
+        if self.position is not None:
+            return self.position[0]
+        return None
     
-    def set_position(self, coin):
-        self.position = coin    # ex. position = coin_a
+    def get_position_entry_price(self):
+        if self.position is not None:
+            return self.position[1]
+        return None
+
+    def reset_position(self):
+        self.position = None
+    
+    def set_position(self, coin, entry_price):
+        self.position = (coin, entry_price)    # ex. position = coin_a
     
     def __repr__(self):
         return f"{self.coin_a}-{self.coin_b}"
