@@ -1,20 +1,55 @@
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
+import json
+import os
 
 from pair import Pair
 from api import APIClient
 from strategy.strategy import Strategy
+from data_handler import DataHandler
 
 class StrategyRunner:
-    def __init__(self, pairs, entry_z_score, exit_z_score, stop_loss_pct, cooldown_hrs):
-        self.pairs = pairs
-        self.entry_z_score = entry_z_score
-        self.exit_z_score = exit_z_score
-        self.stop_loss_pct = stop_loss_pct
-        self.cooldown_hrs = cooldown_hrs
+    def __init__(self, config_path=None):
         self.api = APIClient()
         self.strategy = Strategy()
+        self.data_handler = DataHandler()
+        
+        if config_path:
+            self.load_config(config_path)
+        else:
+            self.pairs = []
+            self.entry_z_score = 1.5
+            self.exit_z_score = 0.5
+            self.stop_loss_pct = 0.15
+            self.cooldown_hrs = 120
+
+    def load_config(self, path):
+        """Load strategy parameters and pairs from a JSON config file."""
+        if not os.path.exists(path):
+            print(f"Config file {path} not found!")
+            return
+
+        with open(path, 'r') as f:
+            config = json.load(f)
+
+        params = config.get("strategy_parameters", {})
+        self.entry_z_score = params.get("z_entry_threshold", 1.5)
+        self.exit_z_score = params.get("z_exit_threshold", 0.5)
+        self.stop_loss_pct = params.get("stop_loss_pct", 0.15)
+        self.cooldown_hrs = params.get("cooldown_hours", 120)
+
+        self.pairs = []
+        for p in config.get("trading_pairs", []):
+            pair_obj = Pair(
+                p["coin_a"], 
+                p["coin_b"], 
+                p["window_size"], 
+                p.get("allocated_capital", 0)
+            )
+            self.pairs.append(pair_obj)
+        
+        print(f"Loaded config from {path}: {len(self.pairs)} pairs found.")
 
     def buy(self, pair: Pair, coin, quantity):
         """Place a buy order for a coin within a pair."""
@@ -54,9 +89,9 @@ class StrategyRunner:
             print(f"Data for {pair} doesn't have enough candles! (required: {window_size})")
             return
         
-        # Turn data into dataframe and calculate log prices
-        close_a = pd.Series([d['close'] for d in a_data]).astype(float)
-        close_b = pd.Series([d['close'] for d in b_data]).astype(float)
+        # Turn data into series and calculate log prices
+        close_a = a_data["close"]
+        close_b = b_data["close"]
         
         log_a = np.log(close_a).tail(window_size)
         log_b = np.log(close_b).tail(window_size)
@@ -99,13 +134,22 @@ class StrategyRunner:
             elif z_score <= self.exit_z_score:
                 self.sell(pair, coin_b, pair.allocated_capital / position_entry_price)
 
-    def run(self, data_provider):
+    def run(self):
         """
         Iterate over all pairs and run handle_data.
-        data_provider should be a function or object that returns hourly data for a coin.
         """
         for pair in self.pairs:
-            a_data = data_provider(pair.coin_a)
-            b_data = data_provider(pair.coin_b)
-            if a_data and b_data:
+            # Update latest data for both coins in the pair
+            self.data_handler.update_latest_data(pair.coin_a)
+            self.data_handler.update_latest_data(pair.coin_b)
+            
+            a_data = self.data_handler.get_data(pair.coin_a)
+            b_data = self.data_handler.get_data(pair.coin_b)
+            
+            if not a_data.empty and not b_data.empty:
                 self.handle_data(pair, a_data, b_data)
+
+if __name__ == "__main__":
+    config_file = os.path.join(os.path.dirname(__file__), "../config/config.json")
+    runner = StrategyRunner(config_path=config_file)
+    runner.run()

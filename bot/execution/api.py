@@ -43,7 +43,9 @@ class APIClient:
         url = f"{self.base_url}/v3/ticker"
         params = {'timestamp': self._get_timestamp()}
         if pair:
-            params['pair'] = pair
+            # Standardize: coin -> coin/USD
+            pair_roostoo = f"{pair}/USD" if "/" not in pair else pair
+            params['pair'] = pair_roostoo
         try:
             res = requests.get(url, params=params)
             res.raise_for_status()
