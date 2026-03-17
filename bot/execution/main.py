@@ -6,7 +6,7 @@ import os
 
 from pair import Pair
 from api import APIClient
-from strategy.strategy import Strategy
+from strategy import Strategy
 from data_handler import DataHandler
 
 class StrategyRunner:
@@ -42,10 +42,10 @@ class StrategyRunner:
         self.pairs = []
         for p in config.get("trading_pairs", []):
             pair_obj = Pair(
-                p["coin_a"], 
-                p["coin_b"], 
-                p["window_size"], 
-                p.get("allocated_capital", 0)
+                coin_a=p["coin_a"], 
+                coin_b=p["coin_b"], 
+                allocated_capital=p.get("allocated_capital", 0),
+                window_size=p["window_size"]
             )
             self.pairs.append(pair_obj)
         
