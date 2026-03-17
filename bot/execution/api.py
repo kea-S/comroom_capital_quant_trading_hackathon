@@ -66,12 +66,12 @@ class APIClient:
             print(f"Error getting balance: {e}")
             return None
 
-    def place_order(self, pair_or_coin, side, quantity, price=None, order_type=None):
+    def place_order(self, coin, side, quantity, price=None, order_type=None):
         """
         Place a LIMIT or MARKET order.
         """
         url = f"{self.base_url}/v3/place_order"
-        pair = f"{pair_or_coin}/USD" if "/" not in pair_or_coin else pair_or_coin
+        pair = f"{coin}/USD"
 
         if order_type is None:
             order_type = "LIMIT" if price is not None else "MARKET"
@@ -89,8 +89,10 @@ class APIClient:
         headers['Content-Type'] = 'application/x-www-form-urlencoded'
 
         try:
+            print(f"Sending request to url={url}")
             res = requests.post(url, headers=headers, data=total_params)
             res.raise_for_status()
+            print(res.json())
             return res.json()
         except requests.exceptions.RequestException as e:
             print(f"Error placing order: {e}")
