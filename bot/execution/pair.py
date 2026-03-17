@@ -11,6 +11,7 @@ class Pair():
         self.allocated_capital = allocated_capital
         self.window_size = window_size
         self.cooldown = 0
+        self.position = None
     
     """
     Check if this pair is on cooldown or not
@@ -32,3 +33,15 @@ class Pair():
     """
     def set_cooldown(self, hours=120):
         self.cooldown = hours
+
+    """
+    Getter and setter for current position
+    """
+    def get_position(self):
+        return self.position
+    
+    def set_position(self, coin):
+        self.position = coin    # ex. position = coin_a
+    
+    def __repr__(self):
+        return f"{self.coin_a}-{self.coin_b}"
