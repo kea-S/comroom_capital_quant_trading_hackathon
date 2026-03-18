@@ -1,5 +1,6 @@
 import statsmodels.api as sm
 import numpy as np
+from logger import logger
 
 """
 Strategy logic class
@@ -31,4 +32,5 @@ class Strategy:
         spread_std = np.sqrt(model.mse_resid)
         current_z = current_spread / spread_std
 
+        logger.info(f"current_spread={current_spread}, spread_std={spread_std}, current_z={current_z}")
         return current_z

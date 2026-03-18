@@ -8,6 +8,7 @@ from pair import Pair
 from api import APIClient
 from strategy import Strategy
 from data_handler import DataHandler
+from logger import logger
 
 class StrategyRunner:
     def __init__(self, config_path=None):
@@ -29,7 +30,7 @@ class StrategyRunner:
     def load_config(self, path):
         """Load strategy parameters and pairs from a JSON config file."""
         if not os.path.exists(path):
-            print(f"Config file {path} not found!")
+            logger.error(f"Config file {path} not found!")
             return
 
         with open(path, 'r') as f:
@@ -51,7 +52,7 @@ class StrategyRunner:
             )
             self.pairs.append(pair_obj)
         
-        print(f"Loaded config from {path}: {len(self.pairs)} pairs found.")
+        logger.info(f"Loaded config from {path}: {len(self.pairs)} pairs found.")
 
     def _init_precisions(self):
         """Fetch and store Price/Amount precision for all pairs from Roostoo."""
@@ -63,9 +64,9 @@ class StrategyRunner:
                     "price": details.get("PricePrecision", 8),
                     "amount": details.get("AmountPrecision", 8)
                 }
-            print(f"Initialized precisions for {len(self.precisions)} coins.")
+            logger.info(f"Initialized precisions for {len(self.precisions)} coins.")
         else:
-            print("Warning: Failed to initialize precisions from Roostoo API.")
+            logger.warning("Warning: Failed to initialize precisions from Roostoo API.")
 
     def round_to_precision(self, value, precision):
         """Round a value to a specified number of decimal places."""
@@ -86,7 +87,7 @@ class StrategyRunner:
         """Place a limit buy order for a coin within a pair at the current ask price."""
         price = self.get_current_ask(coin)
         if price is None:
-            print(f"[{pair}] Failed to fetch ask price for {coin}, skipping BUY.")
+            logger.error(f"[{pair}] Failed to fetch ask price for {coin}, skipping BUY.")
             return False
 
         pair_name = f"{coin}/USD"
@@ -95,7 +96,7 @@ class StrategyRunner:
         rounded_qty = self.round_to_precision(quantity, precision["amount"])
         rounded_price = self.round_to_precision(price, precision["price"])
         
-        print(f"[{pair}] Executing LIMIT BUY for {coin}, quantity={rounded_qty}, price={rounded_price}")
+        logger.info(f"[{pair}] Executing LIMIT BUY for {coin}, quantity={rounded_qty}, price={rounded_price}")
         res = self.api.place_order(coin, "BUY", rounded_qty, price=rounded_price, order_type="LIMIT")
         if res and res.get("Success"):
             entry_price = res["OrderDetail"].get("Price")
@@ -107,7 +108,7 @@ class StrategyRunner:
         """Place a limit sell order for a coin within a pair at the current ask price."""
         price = self.get_current_ask(coin)
         if price is None:
-            print(f"[{pair}] Failed to fetch ask price for {coin}, skipping SELL.")
+            logger.error(f"[{pair}] Failed to fetch ask price for {coin}, skipping SELL.")
             return False
 
         pair_name = f"{coin}/USD"
@@ -116,7 +117,7 @@ class StrategyRunner:
         rounded_qty = self.round_to_precision(quantity, precision["amount"])
         rounded_price = self.round_to_precision(price, precision["price"])
         
-        print(f"[{pair}] Executing LIMIT SELL for {coin}, quantity={rounded_qty}, price={rounded_price}")
+        logger.info(f"[{pair}] Executing LIMIT SELL for {coin}, quantity={rounded_qty}, price={rounded_price}")
         res = self.api.place_order(coin, "SELL", rounded_qty, price=rounded_price, order_type="LIMIT")
         if res and res.get("Success"):
             pair.reset_position()
@@ -129,7 +130,7 @@ class StrategyRunner:
         Executed every hour.
         """
         if pair.is_cooldown():
-            print(f"{pair} is on cooldown: {pair.cooldown}")
+            logger.info(f"{pair} is on cooldown: {pair.cooldown}")
             pair.update_cooldown()
             return
         
@@ -139,7 +140,7 @@ class StrategyRunner:
         
         # Data doesn't have enough values
         if len(a_data) < window_size or len(b_data) < window_size:
-            print(f"Data for {pair} doesn't have enough candles! (required: {window_size})")
+            logger.warning(f"Data for {pair} doesn't have enough candles! (required: {window_size})")
             return
         
         # Turn data into series and calculate log prices
@@ -160,9 +161,11 @@ class StrategyRunner:
         
         if position_ticker is None:
             if z_score < -self.entry_z_score:
+                logger.info(f"[{pair}] Z-score {z_score} < -{self.entry_z_score}, entering long position for {coin_a}")
                 qty = pair.allocated_capital / current_price_a
                 self.buy(pair, coin_a, qty)
             elif z_score > self.entry_z_score:
+                logger.info(f"[{pair}] Z-score {z_score} > {self.entry_z_score}, entering long position for {coin_b}")
                 qty = pair.allocated_capital / current_price_b
                 self.buy(pair, coin_b, qty)
         
@@ -170,28 +173,35 @@ class StrategyRunner:
             # Stop loss logic
             unrealized_return = (current_price_a - position_entry_price) / position_entry_price
             if unrealized_return <= -self.stop_loss_pct:
-                print(f"[{pair}] STOP LOSS triggered for {coin_a}")
+                logger.warning(f"[{pair}] STOP LOSS triggered for {coin_a}")
                 # Use current price for sell qty approximation or fixed capital
                 if self.sell(pair, coin_a, pair.allocated_capital / position_entry_price):
                     pair.set_cooldown(self.cooldown_hrs)
             elif z_score >= -self.exit_z_score:
+                logger.info(f"[{pair}] Z-score {z_score} >= -{self.exit_z_score}, exiting long position for {coin_a}")
                 self.sell(pair, coin_a, pair.allocated_capital / position_entry_price)
 
         elif position_ticker == coin_b:
             # Stop loss logic
             unrealized_return = (current_price_b - position_entry_price) / position_entry_price
             if unrealized_return <= -self.stop_loss_pct:
-                print(f"[{pair}] STOP LOSS triggered for {coin_b}")
+                logger.warning(f"[{pair}] STOP LOSS triggered for {coin_b}")
                 if self.sell(pair, coin_b, pair.allocated_capital / position_entry_price):
                     pair.set_cooldown(self.cooldown_hrs)
             elif z_score <= self.exit_z_score:
+                logger.info(f"[{pair}] Z-score {z_score} <= {self.exit_z_score}, exiting long position for {coin_b}")
                 self.sell(pair, coin_b, pair.allocated_capital / position_entry_price)
 
     def run(self):
+        beginning_total_value, beginning_held_coins = self.api.get_total_portfolio_value()
+        logger.info(f"Initial held coins: {beginning_held_coins}")
+        logger.info(f"Initial portfolio value: ${beginning_total_value:,.2f} USD")
+        
         """
         Iterate over all pairs and run handle_data.
         """
         for pair in self.pairs:
+            logger.info(f"Processing pair: {pair}")
             # Update latest data for both coins in the pair
             self.data_handler.update_latest_data(pair.coin_a)
             self.data_handler.update_latest_data(pair.coin_b)
@@ -201,8 +211,36 @@ class StrategyRunner:
             
             if not a_data.empty and not b_data.empty:
                 self.handle_data(pair, a_data, b_data)
+        
+        ending_total_value, ending_held_coins = self.api.get_total_portfolio_value()
+        logger.info(f"Ending held coins: {ending_held_coins}")
 
 if __name__ == "__main__":
+    import time
+    from datetime import datetime, timedelta
+
     config_file = os.path.join(os.path.dirname(__file__), "../config/config.json")
     runner = StrategyRunner(config_path=config_file)
-    runner.run()
+    
+    logger.info("Trading bot started. Waiting for the next scheduled run at 00:05 past the hour.")
+    
+    while True:
+        now = datetime.now()
+        # Calculate next target time: 00 minutes and 05 seconds past the next hour
+        next_run = now.replace(minute=0, second=5, microsecond=0)
+        
+        # If we already passed 00:05 in the current hour, move to the next hour
+        if next_run <= now:
+            next_run += timedelta(hours=1)
+            
+        sleep_seconds = (next_run - now).total_seconds()
+        logger.info(f"Next run scheduled at {next_run.strftime('%Y-%m-%d %H:%M:%S')}. Sleeping for {sleep_seconds:.2f} seconds.")
+        
+        time.sleep(sleep_seconds)
+        
+        try:
+            logger.info(f"--- Starting Strategy Run at {datetime.now()} ---")
+            runner.run()
+            logger.info(f"--- Strategy Run Completed at {datetime.now()} ---")
+        except Exception as e:
+            logger.error(f"Error during strategy run: {e}")

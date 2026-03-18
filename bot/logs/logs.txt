@@ -1,0 +1,83 @@
+2026-03-17 22:59:18,252 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-17 22:59:18,253 - trading_bot - INFO - Loaded config from /Users/abi/Documents/School/NUS/Year 3/Semester 2/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 10 pairs found.
+2026-03-17 22:59:18,253 - trading_bot - INFO - Trading bot started. Waiting for the next scheduled run at 00:05 past the hour.
+2026-03-17 22:59:18,253 - trading_bot - INFO - Next run scheduled at 2026-03-17 23:00:05. Sleeping for 46.75 seconds.
+2026-03-17 23:00:05,005 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-17 23:00:05.004752 ---
+2026-03-17 23:00:05,153 - trading_bot - INFO - Initial held coins: [('USD', 49514.92)]
+2026-03-17 23:00:05,153 - trading_bot - INFO - Initial portfolio value: $49,514.92 USD
+2026-03-17 23:00:08,527 - trading_bot - INFO - [BTC-ETH] Executing LIMIT BUY for BTC, quantity=0.05376, price=74399.17
+2026-03-17 23:00:08,528 - trading_bot - INFO - Sending request to url=https://mock-api.roostoo.com/v3/place_order
+2026-03-17 23:00:08,606 - trading_bot - INFO - {'Success': True, 'ErrMsg': '', 'OrderDetail': {'Pair': 'BTC/USD', 'OrderID': 2761460, 'Status': 'FILLED', 'Role': 'TAKER', 'ServerTimeUsage': 0.003947714, 'CreateTimestamp': 1773759608631, 'FinishTimestamp': 1773759608634, 'Side': 'BUY', 'Type': 'LIMIT', 'StopType': 'GTC', 'Price': 74399.17, 'Quantity': 0.05376, 'FilledQuantity': 0.05376, 'FilledAverPrice': 74399.17, 'CoinChange': 0.05376, 'UnitChange': 3999.6993792000003, 'CommissionCoin': 'USD', 'CommissionChargeValue': 3.999699, 'CommissionPercent': 0.001, 'OrderWalletType': 'SPOT', 'OrderSource': 'PUBLIC_API'}}
+2026-03-17 23:00:09,205 - trading_bot - INFO - [BTC-BNB] Executing LIMIT BUY for BNB, quantity=5.968, price=670.38
+2026-03-17 23:00:09,206 - trading_bot - INFO - Sending request to url=https://mock-api.roostoo.com/v3/place_order
+2026-03-17 23:00:09,297 - trading_bot - INFO - {'Success': True, 'ErrMsg': '', 'OrderDetail': {'Pair': 'BNB/USD', 'OrderID': 2761461, 'Status': 'FILLED', 'Role': 'TAKER', 'ServerTimeUsage': 0.005985531, 'CreateTimestamp': 1773759609325, 'FinishTimestamp': 1773759609331, 'Side': 'BUY', 'Type': 'LIMIT', 'StopType': 'GTC', 'Price': 670.38, 'Quantity': 5.968, 'FilledQuantity': 5.968, 'FilledAverPrice': 670.38, 'CoinChange': 5.968, 'UnitChange': 4000.82784, 'CommissionCoin': 'USD', 'CommissionChargeValue': 4.000827, 'CommissionPercent': 0.001, 'OrderWalletType': 'SPOT', 'OrderSource': 'PUBLIC_API'}}
+2026-03-17 23:00:10,817 - trading_bot - INFO - [XRP-DOGE] Executing LIMIT BUY for DOGE, quantity=40124.0, price=0.09969
+2026-03-17 23:00:10,817 - trading_bot - INFO - Sending request to url=https://mock-api.roostoo.com/v3/place_order
+2026-03-17 23:00:10,903 - trading_bot - INFO - {'Success': True, 'ErrMsg': '', 'OrderDetail': {'Pair': 'DOGE/USD', 'OrderID': 2761462, 'Status': 'FILLED', 'Role': 'TAKER', 'ServerTimeUsage': 0.005250045, 'CreateTimestamp': 1773759610934, 'FinishTimestamp': 1773759610939, 'Side': 'BUY', 'Type': 'LIMIT', 'StopType': 'GTC', 'Price': 0.09969, 'Quantity': 40124, 'FilledQuantity': 40124, 'FilledAverPrice': 0.09969, 'CoinChange': 40124, 'UnitChange': 3999.96156, 'CommissionCoin': 'USD', 'CommissionChargeValue': 3.999961, 'CommissionPercent': 0.001, 'OrderWalletType': 'SPOT', 'OrderSource': 'PUBLIC_API'}}
+2026-03-17 23:00:11,234 - trading_bot - INFO - [AVAX-DOGE] Executing LIMIT BUY for DOGE, quantity=40124.0, price=0.09969
+2026-03-17 23:00:11,234 - trading_bot - INFO - Sending request to url=https://mock-api.roostoo.com/v3/place_order
+2026-03-17 23:00:11,302 - trading_bot - INFO - {'Success': True, 'ErrMsg': '', 'OrderDetail': {'Pair': 'DOGE/USD', 'OrderID': 2761463, 'Status': 'FILLED', 'Role': 'TAKER', 'ServerTimeUsage': 0.003531611, 'CreateTimestamp': 1773759611333, 'FinishTimestamp': 1773759611337, 'Side': 'BUY', 'Type': 'LIMIT', 'StopType': 'GTC', 'Price': 0.09969, 'Quantity': 40124, 'FilledQuantity': 40124, 'FilledAverPrice': 0.09969, 'CoinChange': 40124, 'UnitChange': 3999.96156, 'CommissionCoin': 'USD', 'CommissionChargeValue': 3.999961, 'CommissionPercent': 0.001, 'OrderWalletType': 'SPOT', 'OrderSource': 'PUBLIC_API'}}
+2026-03-17 23:00:11,900 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 80248.0), ('USD', 33498.47)]
+2026-03-17 23:00:11,900 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-17 23:00:11.900730 ---
+2026-03-17 23:00:11,900 - trading_bot - INFO - Next run scheduled at 2026-03-18 00:00:05. Sleeping for 3593.10 seconds.
+2026-03-18 00:00:04,988 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 00:00:04.985608 ---
+2026-03-18 00:00:05,256 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 80248.0), ('USD', 33498.47)]
+2026-03-18 00:00:05,256 - trading_bot - INFO - Initial portfolio value: $49,459.04 USD
+2026-03-18 00:00:10,766 - trading_bot - INFO - [NEAR-DOGE] Executing LIMIT BUY for DOGE, quantity=40128.0, price=0.09969
+2026-03-18 00:00:10,766 - trading_bot - INFO - Sending request to url=https://mock-api.roostoo.com/v3/place_order
+2026-03-18 00:00:10,846 - trading_bot - INFO - {'Success': True, 'ErrMsg': '', 'OrderDetail': {'Pair': 'DOGE/USD', 'OrderID': 2761553, 'Status': 'FILLED', 'Role': 'TAKER', 'ServerTimeUsage': 0.011897999, 'CreateTimestamp': 1773763210812, 'FinishTimestamp': 1773763210824, 'Side': 'BUY', 'Type': 'LIMIT', 'StopType': 'GTC', 'Price': 0.09969, 'Quantity': 40128, 'FilledQuantity': 40128, 'FilledAverPrice': 0.09969, 'CoinChange': 40128, 'UnitChange': 4000.3603200000002, 'CommissionCoin': 'USD', 'CommissionChargeValue': 4.00036, 'CommissionPercent': 0.001, 'OrderWalletType': 'SPOT', 'OrderSource': 'PUBLIC_API'}}
+2026-03-18 00:00:10,959 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 00:00:10,959 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 00:00:10.959424 ---
+2026-03-18 00:00:10,959 - trading_bot - INFO - Next run scheduled at 2026-03-18 01:00:05. Sleeping for 3594.04 seconds.
+2026-03-18 01:00:04,849 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 01:00:04.848299 ---
+2026-03-18 01:00:05,074 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 01:00:05,075 - trading_bot - INFO - Initial portfolio value: $49,516.28 USD
+2026-03-18 01:00:12,070 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 01:00:12,070 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 01:00:12.070501 ---
+2026-03-18 01:00:12,070 - trading_bot - INFO - Next run scheduled at 2026-03-18 02:00:05. Sleeping for 3592.93 seconds.
+2026-03-18 02:00:04,965 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 02:00:04.965670 ---
+2026-03-18 02:00:05,182 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 02:00:05,182 - trading_bot - INFO - Initial portfolio value: $49,618.90 USD
+2026-03-18 02:00:12,659 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 02:00:12,659 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 02:00:12.659676 ---
+2026-03-18 02:00:12,659 - trading_bot - INFO - Next run scheduled at 2026-03-18 03:00:05. Sleeping for 3592.34 seconds.
+2026-03-18 03:00:04,920 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 03:00:04.918801 ---
+2026-03-18 03:00:05,325 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 03:00:05,326 - trading_bot - INFO - Initial portfolio value: $49,684.24 USD
+2026-03-18 03:00:10,625 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 03:00:10,625 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 03:00:10.625590 ---
+2026-03-18 03:00:10,625 - trading_bot - INFO - Next run scheduled at 2026-03-18 04:00:05. Sleeping for 3594.37 seconds.
+2026-03-18 04:00:04,990 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 04:00:04.990142 ---
+2026-03-18 04:00:05,243 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 04:00:05,243 - trading_bot - INFO - Initial portfolio value: $49,571.35 USD
+2026-03-18 04:00:10,532 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 04:00:10,533 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 04:00:10.533013 ---
+2026-03-18 04:00:10,533 - trading_bot - INFO - Next run scheduled at 2026-03-18 05:00:05. Sleeping for 3594.47 seconds.
+2026-03-18 05:00:04,882 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 05:00:04.882353 ---
+2026-03-18 05:00:05,218 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 05:00:05,218 - trading_bot - INFO - Initial portfolio value: $49,617.13 USD
+2026-03-18 05:00:10,311 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 05:00:10,311 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 05:00:10.311747 ---
+2026-03-18 05:00:10,311 - trading_bot - INFO - Next run scheduled at 2026-03-18 06:00:05. Sleeping for 3594.69 seconds.
+2026-03-18 06:00:04,922 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 06:00:04.921371 ---
+2026-03-18 06:00:05,159 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 06:00:05,159 - trading_bot - INFO - Initial portfolio value: $49,708.80 USD
+2026-03-18 06:00:10,233 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 06:00:10,233 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 06:00:10.233246 ---
+2026-03-18 06:00:10,233 - trading_bot - INFO - Next run scheduled at 2026-03-18 07:00:05. Sleeping for 3594.77 seconds.
+2026-03-18 07:00:04,949 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 07:00:04.948242 ---
+2026-03-18 07:00:05,253 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 07:00:05,253 - trading_bot - INFO - Initial portfolio value: $49,643.51 USD
+2026-03-18 07:00:10,619 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 07:00:10,619 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 07:00:10.619849 ---
+2026-03-18 07:00:10,619 - trading_bot - INFO - Next run scheduled at 2026-03-18 08:00:05. Sleeping for 3594.38 seconds.
+2026-03-18 08:00:04,952 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-18 08:00:04.951737 ---
+2026-03-18 08:00:05,231 - trading_bot - INFO - Initial held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 08:00:05,232 - trading_bot - INFO - Initial portfolio value: $49,512.72 USD
+2026-03-18 08:00:12,402 - trading_bot - INFO - Ending held coins: [('BNB', 5.968), ('BTC', 0.05376), ('DOGE', 120376.0), ('USD', 29494.11)]
+2026-03-18 08:00:12,402 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-18 08:00:12.402749 ---
+2026-03-18 08:00:12,402 - trading_bot - INFO - Next run scheduled at 2026-03-18 09:00:05. Sleeping for 3592.60 seconds.
+2026-03-18 08:21:21,507 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-18 08:21:21,507 - trading_bot - INFO - Loaded config from /Users/abi/Documents/School/NUS/Year 3/Semester 2/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 10 pairs found.
+2026-03-18 08:21:21,507 - trading_bot - INFO - Trading bot started. Waiting for the next scheduled run at 00:05 past the hour.
+2026-03-18 08:21:21,507 - trading_bot - INFO - Next run scheduled at 2026-03-18 09:00:05. Sleeping for 2323.49 seconds.
