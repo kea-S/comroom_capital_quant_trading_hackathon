@@ -161,9 +161,11 @@ class StrategyRunner:
         
         if position_ticker is None:
             if z_score < -self.entry_z_score:
+                logger.info(f"[{pair}] Z-score {z_score} < -{self.entry_z_score}, entering long position for {coin_a}")
                 qty = pair.allocated_capital / current_price_a
                 self.buy(pair, coin_a, qty)
             elif z_score > self.entry_z_score:
+                logger.info(f"[{pair}] Z-score {z_score} > {self.entry_z_score}, entering long position for {coin_b}")
                 qty = pair.allocated_capital / current_price_b
                 self.buy(pair, coin_b, qty)
         
@@ -176,6 +178,7 @@ class StrategyRunner:
                 if self.sell(pair, coin_a, pair.allocated_capital / position_entry_price):
                     pair.set_cooldown(self.cooldown_hrs)
             elif z_score >= -self.exit_z_score:
+                logger.info(f"[{pair}] Z-score {z_score} >= -{self.exit_z_score}, exiting long position for {coin_a}")
                 self.sell(pair, coin_a, pair.allocated_capital / position_entry_price)
 
         elif position_ticker == coin_b:
@@ -186,6 +189,7 @@ class StrategyRunner:
                 if self.sell(pair, coin_b, pair.allocated_capital / position_entry_price):
                     pair.set_cooldown(self.cooldown_hrs)
             elif z_score <= self.exit_z_score:
+                logger.info(f"[{pair}] Z-score {z_score} <= {self.exit_z_score}, exiting long position for {coin_b}")
                 self.sell(pair, coin_b, pair.allocated_capital / position_entry_price)
 
     def run(self):
@@ -197,6 +201,7 @@ class StrategyRunner:
         Iterate over all pairs and run handle_data.
         """
         for pair in self.pairs:
+            logger.info(f"Processing pair: {pair}")
             # Update latest data for both coins in the pair
             self.data_handler.update_latest_data(pair.coin_a)
             self.data_handler.update_latest_data(pair.coin_b)
@@ -211,6 +216,31 @@ class StrategyRunner:
         logger.info(f"Ending held coins: {ending_held_coins}")
 
 if __name__ == "__main__":
+    import time
+    from datetime import datetime, timedelta
+
     config_file = os.path.join(os.path.dirname(__file__), "../config/config.json")
     runner = StrategyRunner(config_path=config_file)
-    runner.run()
+    
+    logger.info("Trading bot started. Waiting for the next scheduled run at 00:05 past the hour.")
+    
+    while True:
+        now = datetime.now()
+        # Calculate next target time: 00 minutes and 05 seconds past the next hour
+        next_run = now.replace(minute=0, second=5, microsecond=0)
+        
+        # If we already passed 00:05 in the current hour, move to the next hour
+        if next_run <= now:
+            next_run += timedelta(hours=1)
+            
+        sleep_seconds = (next_run - now).total_seconds()
+        logger.info(f"Next run scheduled at {next_run.strftime('%Y-%m-%d %H:%M:%S')}. Sleeping for {sleep_seconds:.2f} seconds.")
+        
+        time.sleep(sleep_seconds)
+        
+        try:
+            logger.info(f"--- Starting Strategy Run at {datetime.now()} ---")
+            runner.run()
+            logger.info(f"--- Strategy Run Completed at {datetime.now()} ---")
+        except Exception as e:
+            logger.error(f"Error during strategy run: {e}")
