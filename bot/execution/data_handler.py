@@ -5,7 +5,7 @@ import numpy as np
 import os
 import pickle
 
-CACHE_DIR = "klines_cache"
+CACHE_DIR = "bot/data/klines_cache"
 
 class DataHandler:
     """
@@ -13,7 +13,7 @@ class DataHandler:
     """
     BASE_URL = "https://api.binance.com/api/v3/klines"
 
-    def __init__(self, interval="1h", days_back=30):
+    def __init__(self, interval="1h", days_back=90):
         self.interval = interval
         self.days_back = days_back
         self.cache_dir = CACHE_DIR

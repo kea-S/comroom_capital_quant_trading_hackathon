@@ -3,3 +3,6 @@ numpy
 statsmodels
 requests
 python-dotenv
+streamlit
+plotly
+
