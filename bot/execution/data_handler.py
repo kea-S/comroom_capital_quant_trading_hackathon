@@ -2,6 +2,10 @@ import time
 import requests
 import pandas as pd
 import numpy as np
+import os
+import pickle
+
+CACHE_DIR = "klines_cache"
 
 class DataHandler:
     """
@@ -12,7 +16,43 @@ class DataHandler:
     def __init__(self, interval="1h", days_back=30):
         self.interval = interval
         self.days_back = days_back
-        self.cache = {}  # {coin_ticker: pd.DataFrame}
+        self.cache_dir = CACHE_DIR
+        os.makedirs(self.cache_dir, exist_ok=True)
+
+        self.cache = self._load_cache() # {coin_ticker: pd.DataFrame} 
+        
+    def _load_cache(self):
+        cache = {}
+
+        print("Loading cache from disk...")
+
+        for file in os.listdir(self.cache_dir):
+            if file.endswith(".pkl"):
+                coin = file[:-4]
+                path = os.path.join(self.cache_dir, file)
+
+                try:
+                    with open(path, "rb") as f:
+                        df = pickle.load(f)
+                        cache[coin] = df
+                        print(f"Got {coin} cache. Count: {len(df)} candles.")
+                except Exception as e:
+                    print(f"Failed to load {coin}: {e}")
+
+        return cache
+            
+    def _save_cache(self, coin):
+        try:
+            path = os.path.join(self.cache_dir, f"{coin}.pkl")
+            tmp_path = path + ".tmp"
+
+            with open(tmp_path, "wb") as f:
+                pickle.dump(self.cache[coin], f)
+
+            os.replace(tmp_path, path)  # atomic write
+
+        except Exception as e:
+            print(f"Failed to save {coin} cache: {e}")
 
     def fetch_binance_klines(self, symbol: str, interval: str, start_ms: int, end_ms: int) -> pd.DataFrame:
         """
@@ -77,6 +117,8 @@ class DataHandler:
             df = self.fetch_binance_klines(symbol, self.interval, start_ms, end_ms)
             if not df.empty:
                 self.cache[coin] = df
+            self._save_cache(coin)
+            print(f"Got {coin} cache. Count: {len(df)} candles.")
         
         return self.cache.get(coin, pd.DataFrame())
 
@@ -101,4 +143,5 @@ class DataHandler:
             # Drop the last candle of old data if it overlaps (though start_ms+1 should prevent this)
             updated_df = pd.concat([self.cache[coin], new_df]).drop_duplicates(subset=["open_time"])
             self.cache[coin] = updated_df.sort_values("open_time").reset_index(drop=True)
+            self._save_cache(coin)
             print(f"Updated {coin} cache. New count: {len(self.cache[coin])} candles.")
