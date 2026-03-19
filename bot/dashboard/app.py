@@ -14,7 +14,7 @@ streamlit run bot/dashboard/app.py
 """
 
 # Set page config
-st.set_page_config(page_title="Trading Bot Dashboard", layout="wide")
+# st.set_page_config(page_title="Trading Bot Dashboard", layout="wide")
 
 # Paths
 DATA_DIR = "bot/logs"
