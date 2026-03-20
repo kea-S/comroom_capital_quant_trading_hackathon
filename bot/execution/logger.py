@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+from config import LOG_FILE
 
 def setup_logger(name="trading_bot", level=logging.INFO):
     """
@@ -35,5 +36,6 @@ def setup_logger(name="trading_bot", level=logging.INFO):
 
     return logger
 
+
 # Single instance for the whole bot
-logger = setup_logger()
+logger = setup_logger(log_file=str(LOG_FILE))

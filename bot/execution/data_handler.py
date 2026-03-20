@@ -13,7 +13,7 @@ class DataHandler:
     """
     BASE_URL = "https://api.binance.com/api/v3/klines"
 
-    def __init__(self, interval="1h", days_back=90):
+    def __init__(self, interval="1h", days_back=100):
         self.interval = interval
         self.days_back = days_back
         self.cache_dir = CACHE_DIR

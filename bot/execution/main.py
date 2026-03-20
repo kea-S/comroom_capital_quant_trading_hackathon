@@ -230,26 +230,10 @@ if __name__ == "__main__":
 
     config_file = os.path.join(os.path.dirname(__file__), "../config/config.json")
     runner = StrategyRunner(config_path=config_file)
-    
-    logger.info("Trading bot started. Waiting for the next scheduled run at 00:05 past the hour.")
-    
-    while True:
-        now = datetime.now()
-        # Calculate next target time: 00 minutes and 05 seconds past the next hour
-        next_run = now.replace(minute=0, second=5, microsecond=0)
-        
-        # If we already passed 00:05 in the current hour, move to the next hour
-        if next_run <= now:
-            next_run += timedelta(hours=1)
-            
-        sleep_seconds = (next_run - now).total_seconds()
-        logger.info(f"Next run scheduled at {next_run.strftime('%Y-%m-%d %H:%M:%S')}. Sleeping for {sleep_seconds:.2f} seconds.")
-        
-        time.sleep(sleep_seconds)
-        
-        try:
-            logger.info(f"--- Starting Strategy Run at {datetime.now()} ---")
-            runner.run()
-            logger.info(f"--- Strategy Run Completed at {datetime.now()} ---")
-        except Exception as e:
-            logger.error(f"Error during strategy run: {e}")
+
+    try:
+        logger.info(f"--- Starting Strategy Run at {datetime.now()} ---")
+        runner.run()
+        logger.info(f"--- Strategy Run Completed at {datetime.now()} ---")
+    except Exception as e:
+        logger.error(f"Error during strategy run: {e}")
