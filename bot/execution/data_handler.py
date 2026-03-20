@@ -5,7 +5,7 @@ import numpy as np
 import os
 import pickle
 
-CACHE_DIR = "klines_cache"
+CACHE_DIR = "bot/data/klines_cache"
 
 class DataHandler:
     """

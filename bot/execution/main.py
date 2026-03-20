@@ -9,12 +9,14 @@ from api import APIClient
 from strategy import Strategy
 from data_handler import DataHandler
 from logger import logger
+from performance_tracker import PerformanceTracker
 
 class StrategyRunner:
     def __init__(self, config_path=None):
         self.api = APIClient()
         self.strategy = Strategy()
         self.data_handler = DataHandler()
+        self.performance_tracker = PerformanceTracker()
         self.precisions = {}
         self._init_precisions()
         
@@ -83,7 +85,7 @@ class StrategyRunner:
             return data.get("MinAsk")
         return None
 
-    def buy(self, pair: Pair, coin, quantity):
+    def buy(self, pair: Pair, coin, quantity, z_score=None):
         """Place a limit buy order for a coin within a pair at the current ask price."""
         price = self.get_current_ask(coin)
         if price is None:
@@ -101,10 +103,12 @@ class StrategyRunner:
         if res and res.get("Success"):
             entry_price = res["OrderDetail"].get("Price")
             pair.set_position(coin, entry_price)
+            self.performance_tracker.log_trade(pair, coin, "BUY", entry_price, rounded_qty, z_score)
+            self.performance_tracker.update_current_positions(self.pairs)
             return True
         return False
 
-    def sell(self, pair: Pair, coin, quantity):
+    def sell(self, pair: Pair, coin, quantity, z_score=None):
         """Place a limit sell order for a coin within a pair at the current ask price."""
         price = self.get_current_ask(coin)
         if price is None:
@@ -120,7 +124,10 @@ class StrategyRunner:
         logger.info(f"[{pair}] Executing LIMIT SELL for {coin}, quantity={rounded_qty}, price={rounded_price}")
         res = self.api.place_order(coin, "SELL", rounded_qty, price=rounded_price, order_type="LIMIT")
         if res and res.get("Success"):
+            actual_price = res["OrderDetail"].get("Price")
             pair.reset_position()
+            self.performance_tracker.log_trade(pair, coin, "SELL", actual_price, rounded_qty, z_score)
+            self.performance_tracker.update_current_positions(self.pairs)
             return True
         return False
 
@@ -163,11 +170,11 @@ class StrategyRunner:
             if z_score < -self.entry_z_score:
                 logger.info(f"[{pair}] Z-score {z_score} < -{self.entry_z_score}, entering long position for {coin_a}")
                 qty = pair.allocated_capital / current_price_a
-                self.buy(pair, coin_a, qty)
+                self.buy(pair, coin_a, qty, z_score=z_score)
             elif z_score > self.entry_z_score:
                 logger.info(f"[{pair}] Z-score {z_score} > {self.entry_z_score}, entering long position for {coin_b}")
                 qty = pair.allocated_capital / current_price_b
-                self.buy(pair, coin_b, qty)
+                self.buy(pair, coin_b, qty, z_score=z_score)
         
         elif position_ticker == coin_a:
             # Stop loss logic
@@ -175,22 +182,22 @@ class StrategyRunner:
             if unrealized_return <= -self.stop_loss_pct:
                 logger.warning(f"[{pair}] STOP LOSS triggered for {coin_a}")
                 # Use current price for sell qty approximation or fixed capital
-                if self.sell(pair, coin_a, pair.allocated_capital / position_entry_price):
+                if self.sell(pair, coin_a, pair.allocated_capital / position_entry_price, z_score=z_score):
                     pair.set_cooldown(self.cooldown_hrs)
             elif z_score >= -self.exit_z_score:
                 logger.info(f"[{pair}] Z-score {z_score} >= -{self.exit_z_score}, exiting long position for {coin_a}")
-                self.sell(pair, coin_a, pair.allocated_capital / position_entry_price)
+                self.sell(pair, coin_a, pair.allocated_capital / position_entry_price, z_score=z_score)
 
         elif position_ticker == coin_b:
             # Stop loss logic
             unrealized_return = (current_price_b - position_entry_price) / position_entry_price
             if unrealized_return <= -self.stop_loss_pct:
                 logger.warning(f"[{pair}] STOP LOSS triggered for {coin_b}")
-                if self.sell(pair, coin_b, pair.allocated_capital / position_entry_price):
+                if self.sell(pair, coin_b, pair.allocated_capital / position_entry_price, z_score=z_score):
                     pair.set_cooldown(self.cooldown_hrs)
             elif z_score <= self.exit_z_score:
                 logger.info(f"[{pair}] Z-score {z_score} <= {self.exit_z_score}, exiting long position for {coin_b}")
-                self.sell(pair, coin_b, pair.allocated_capital / position_entry_price)
+                self.sell(pair, coin_b, pair.allocated_capital / position_entry_price, z_score=z_score)
 
     def run(self):
         beginning_total_value, beginning_held_coins = self.api.get_total_portfolio_value()
@@ -214,6 +221,8 @@ class StrategyRunner:
         
         ending_total_value, ending_held_coins = self.api.get_total_portfolio_value()
         logger.info(f"Ending held coins: {ending_held_coins}")
+        if ending_total_value:
+            self.performance_tracker.log_equity(ending_total_value)
 
 if __name__ == "__main__":
     import time
