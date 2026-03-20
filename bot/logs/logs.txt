@@ -81,3 +81,729 @@
 2026-03-18 08:21:21,507 - trading_bot - INFO - Loaded config from /Users/abi/Documents/School/NUS/Year 3/Semester 2/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 10 pairs found.
 2026-03-18 08:21:21,507 - trading_bot - INFO - Trading bot started. Waiting for the next scheduled run at 00:05 past the hour.
 2026-03-18 08:21:21,507 - trading_bot - INFO - Next run scheduled at 2026-03-18 09:00:05. Sleeping for 2323.49 seconds.
+Traceback (most recent call last):
+  File "/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/main.py", line 8, in <module>
+    from api import APIClient
+  File "/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/api.py", line 7, in <module>
+    from logger import logger
+  File "/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/logger.py", line 4, in <module>
+    from config import LOG_FILE
+ModuleNotFoundError: No module named 'config'
+Traceback (most recent call last):
+  File "/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/main.py", line 8, in <module>
+    from api import APIClient
+  File "/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/api.py", line 7, in <module>
+    from logger import logger
+  File "/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/logger.py", line 4, in <module>
+    from config import LOG_FILE
+ModuleNotFoundError: No module named 'config'
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+2026-03-19 15:21:14,077 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 15:21:14,077 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 15:21:14,077 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 15:21:14,077 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 15:21:14,077 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 15:21:14.077653 ---
+2026-03-19 15:21:14,077 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 15:21:14.077653 ---
+2026-03-19 15:21:14,315 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 15:21:14,315 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 15:21:14,315 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 15:21:14,315 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 15:21:14,315 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 15:21:14,315 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Fetching initial historical data for CAKE...
+Got CAKE cache. Count: 720 candles.
+Fetching initial historical data for LISTA...
+Got LISTA cache. Count: 720 candles.
+2026-03-19 15:21:15,071 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:15,071 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:15,071 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 15:21:15,071 - trading_bot - INFO - Processing pair: XRP-CFX
+Fetching initial historical data for XRP...
+Got XRP cache. Count: 720 candles.
+Fetching initial historical data for CFX...
+Got CFX cache. Count: 720 candles.
+2026-03-19 15:21:15,810 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:15,810 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:15,810 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 15:21:15,810 - trading_bot - INFO - Processing pair: XRP-XLM
+Fetching initial historical data for XLM...
+Got XLM cache. Count: 720 candles.
+2026-03-19 15:21:16,323 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:16,323 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:16,324 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 15:21:16,324 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Fetching initial historical data for BONK...
+Got BONK cache. Count: 720 candles.
+Fetching initial historical data for FLOKI...
+Got FLOKI cache. Count: 720 candles.
+2026-03-19 15:21:17,049 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:17,049 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:17,049 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 15:21:17,049 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Fetching initial historical data for AVAX...
+Got AVAX cache. Count: 720 candles.
+Fetching initial historical data for DOGE...
+Got DOGE cache. Count: 720 candles.
+2026-03-19 15:21:17,860 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:17,860 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:17,860 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 15:21:17,860 - trading_bot - INFO - Processing pair: XRP-LTC
+Fetching initial historical data for LTC...
+Got LTC cache. Count: 720 candles.
+2026-03-19 15:21:18,460 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:18,460 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 15:21:18,687 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 15:21:18,687 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 15:21:18,688 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 15:21:18.688205 ---
+2026-03-19 15:21:18,688 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 15:21:18.688205 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 720 candles.
+Got LISTA cache. Count: 720 candles.
+Got XRP cache. Count: 720 candles.
+Got CFX cache. Count: 720 candles.
+Got XLM cache. Count: 720 candles.
+Got BONK cache. Count: 720 candles.
+Got FLOKI cache. Count: 720 candles.
+Got AVAX cache. Count: 720 candles.
+Got DOGE cache. Count: 720 candles.
+Got LTC cache. Count: 720 candles.
+2026-03-19 15:22:14,023 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 15:22:14,023 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 15:22:14,024 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 15:22:14,024 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 15:22:14,024 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 15:22:14.024379 ---
+2026-03-19 15:22:14,024 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 15:22:14.024379 ---
+2026-03-19 15:22:14,265 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 15:22:14,265 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 15:22:14,265 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 15:22:14,265 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 15:22:14,265 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 15:22:14,265 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 15:22:14,521 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:14,521 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:14,522 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 15:22:14,522 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 15:22:14,773 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:14,773 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:14,773 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 15:22:14,773 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 15:22:15,028 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:15,028 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:15,029 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 15:22:15,029 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 15:22:15,272 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:15,272 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:15,272 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 15:22:15,272 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 15:22:15,527 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:15,527 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:15,528 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 15:22:15,528 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 15:22:15,780 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:15,780 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 15:22:16,007 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 15:22:16,007 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 15:22:16,007 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 15:22:16.007659 ---
+2026-03-19 15:22:16,007 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 15:22:16.007659 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 720 candles.
+Got LISTA cache. Count: 720 candles.
+Got XRP cache. Count: 720 candles.
+Got CFX cache. Count: 720 candles.
+Got XLM cache. Count: 720 candles.
+Got BONK cache. Count: 720 candles.
+Got FLOKI cache. Count: 720 candles.
+Got AVAX cache. Count: 720 candles.
+Got DOGE cache. Count: 720 candles.
+Got LTC cache. Count: 720 candles.
+2026-03-19 16:00:14,252 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 16:00:14,252 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 16:00:14,253 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 16:00:14,253 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 16:00:14,253 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 16:00:14.253259 ---
+2026-03-19 16:00:14,253 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 16:00:14.253259 ---
+2026-03-19 16:00:14,670 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 16:00:14,670 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 16:00:14,670 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 16:00:14,670 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 16:00:14,670 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 16:00:14,670 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 721 candles.
+Updated LISTA cache. New count: 721 candles.
+2026-03-19 16:00:15,579 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:15,579 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:15,580 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 16:00:15,580 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 721 candles.
+Updated CFX cache. New count: 721 candles.
+2026-03-19 16:00:16,292 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:16,292 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:16,292 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 16:00:16,292 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 721 candles.
+2026-03-19 16:00:16,782 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:16,782 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:16,782 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 16:00:16,782 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 721 candles.
+Updated FLOKI cache. New count: 721 candles.
+2026-03-19 16:00:17,506 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:17,506 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:17,506 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 16:00:17,506 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 721 candles.
+Updated DOGE cache. New count: 721 candles.
+2026-03-19 16:00:18,232 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:18,232 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:18,232 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 16:00:18,232 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 721 candles.
+2026-03-19 16:00:18,726 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:18,726 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 16:00:18,955 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 16:00:18,955 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 16:00:18,955 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 16:00:18.955857 ---
+2026-03-19 16:00:18,955 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 16:00:18.955857 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 721 candles.
+Got LISTA cache. Count: 721 candles.
+Got XRP cache. Count: 721 candles.
+Got CFX cache. Count: 721 candles.
+Got XLM cache. Count: 721 candles.
+Got BONK cache. Count: 721 candles.
+Got FLOKI cache. Count: 721 candles.
+Got AVAX cache. Count: 721 candles.
+Got DOGE cache. Count: 721 candles.
+Got LTC cache. Count: 721 candles.
+2026-03-19 17:00:14,295 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 17:00:14,295 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 17:00:14,295 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 17:00:14,295 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 17:00:14,295 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 17:00:14.295602 ---
+2026-03-19 17:00:14,295 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 17:00:14.295602 ---
+2026-03-19 17:00:14,530 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 17:00:14,530 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 17:00:14,530 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 17:00:14,530 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 17:00:14,530 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 17:00:14,530 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 722 candles.
+Updated LISTA cache. New count: 722 candles.
+2026-03-19 17:00:15,269 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:15,269 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:15,269 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 17:00:15,269 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 722 candles.
+Updated CFX cache. New count: 722 candles.
+2026-03-19 17:00:15,969 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:15,969 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:15,969 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 17:00:15,969 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 722 candles.
+2026-03-19 17:00:16,444 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:16,444 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:16,444 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 17:00:16,444 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 722 candles.
+Updated FLOKI cache. New count: 722 candles.
+2026-03-19 17:00:17,148 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:17,148 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:17,149 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 17:00:17,149 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 722 candles.
+Updated DOGE cache. New count: 722 candles.
+2026-03-19 17:00:17,863 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:17,863 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:17,863 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 17:00:17,863 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 722 candles.
+2026-03-19 17:00:18,353 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:18,353 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 17:00:18,586 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 17:00:18,586 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 17:00:18,586 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 17:00:18.586826 ---
+2026-03-19 17:00:18,586 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 17:00:18.586826 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 722 candles.
+Got LISTA cache. Count: 722 candles.
+Got XRP cache. Count: 722 candles.
+Got CFX cache. Count: 722 candles.
+Got XLM cache. Count: 722 candles.
+Got BONK cache. Count: 722 candles.
+Got FLOKI cache. Count: 722 candles.
+Got AVAX cache. Count: 722 candles.
+Got DOGE cache. Count: 722 candles.
+Got LTC cache. Count: 722 candles.
+2026-03-19 18:00:14,707 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 18:00:14,707 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 18:00:14,708 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 18:00:14,708 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 18:00:14,708 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 18:00:14.708169 ---
+2026-03-19 18:00:14,708 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 18:00:14.708169 ---
+2026-03-19 18:00:14,936 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 18:00:14,936 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 18:00:14,936 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 18:00:14,936 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 18:00:14,936 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 18:00:14,936 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 723 candles.
+Updated LISTA cache. New count: 723 candles.
+2026-03-19 18:00:15,707 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:15,707 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:15,707 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 18:00:15,707 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 723 candles.
+Updated CFX cache. New count: 723 candles.
+2026-03-19 18:00:16,467 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:16,467 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:16,467 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 18:00:16,467 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 723 candles.
+2026-03-19 18:00:16,994 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:16,994 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:16,995 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 18:00:16,995 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 723 candles.
+Updated FLOKI cache. New count: 723 candles.
+2026-03-19 18:00:17,971 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:17,971 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:17,971 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 18:00:17,971 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 723 candles.
+Updated DOGE cache. New count: 723 candles.
+2026-03-19 18:00:18,761 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:18,761 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:18,761 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 18:00:18,761 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 723 candles.
+2026-03-19 18:00:19,291 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:19,291 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 18:00:19,520 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 18:00:19,520 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 18:00:19,521 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 18:00:19.521500 ---
+2026-03-19 18:00:19,521 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 18:00:19.521500 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 723 candles.
+Got LISTA cache. Count: 723 candles.
+Got XRP cache. Count: 723 candles.
+Got CFX cache. Count: 723 candles.
+Got XLM cache. Count: 723 candles.
+Got BONK cache. Count: 723 candles.
+Got FLOKI cache. Count: 723 candles.
+Got AVAX cache. Count: 723 candles.
+Got DOGE cache. Count: 723 candles.
+Got LTC cache. Count: 723 candles.
+2026-03-19 19:00:14,719 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 19:00:14,719 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 19:00:14,719 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 19:00:14,719 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 19:00:14,719 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 19:00:14.719944 ---
+2026-03-19 19:00:14,719 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 19:00:14.719944 ---
+2026-03-19 19:00:14,948 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 19:00:14,948 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 19:00:14,948 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 19:00:14,948 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 19:00:14,948 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 19:00:14,948 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 724 candles.
+Updated LISTA cache. New count: 724 candles.
+2026-03-19 19:00:15,701 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:15,701 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:15,701 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 19:00:15,701 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 724 candles.
+Updated CFX cache. New count: 724 candles.
+2026-03-19 19:00:16,461 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:16,461 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:16,462 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 19:00:16,462 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 724 candles.
+2026-03-19 19:00:16,971 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:16,971 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:16,971 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 19:00:16,971 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 724 candles.
+Updated FLOKI cache. New count: 724 candles.
+2026-03-19 19:00:17,718 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:17,718 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:17,719 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 19:00:17,719 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 724 candles.
+Updated DOGE cache. New count: 724 candles.
+2026-03-19 19:00:18,456 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:18,456 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:18,456 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 19:00:18,456 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 724 candles.
+2026-03-19 19:00:18,960 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:18,960 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 19:00:19,189 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 19:00:19,189 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 19:00:19,189 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 19:00:19.189906 ---
+2026-03-19 19:00:19,189 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 19:00:19.189906 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 724 candles.
+Got LISTA cache. Count: 724 candles.
+Got XRP cache. Count: 724 candles.
+Got CFX cache. Count: 724 candles.
+Got XLM cache. Count: 724 candles.
+Got BONK cache. Count: 724 candles.
+Got FLOKI cache. Count: 724 candles.
+Got AVAX cache. Count: 724 candles.
+Got DOGE cache. Count: 724 candles.
+Got LTC cache. Count: 724 candles.
+2026-03-19 20:00:14,484 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 20:00:14,484 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 20:00:14,484 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 20:00:14,484 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 20:00:14,484 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 20:00:14.484598 ---
+2026-03-19 20:00:14,484 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 20:00:14.484598 ---
+2026-03-19 20:00:14,712 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 20:00:14,712 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 20:00:14,712 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 20:00:14,712 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 20:00:14,712 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 20:00:14,712 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 725 candles.
+Updated LISTA cache. New count: 725 candles.
+2026-03-19 20:00:15,418 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:15,418 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:15,418 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 20:00:15,418 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 725 candles.
+Updated CFX cache. New count: 725 candles.
+2026-03-19 20:00:16,121 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:16,121 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:16,121 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 20:00:16,121 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 725 candles.
+2026-03-19 20:00:16,628 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:16,628 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:16,629 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 20:00:16,629 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 725 candles.
+Updated FLOKI cache. New count: 725 candles.
+2026-03-19 20:00:17,328 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:17,328 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:17,328 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 20:00:17,328 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 725 candles.
+Updated DOGE cache. New count: 725 candles.
+2026-03-19 20:00:18,043 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:18,043 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:18,043 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 20:00:18,043 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 725 candles.
+2026-03-19 20:00:18,508 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:18,508 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 20:00:18,734 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 20:00:18,734 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 20:00:18,735 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 20:00:18.735135 ---
+2026-03-19 20:00:18,735 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 20:00:18.735135 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 725 candles.
+Got LISTA cache. Count: 725 candles.
+Got XRP cache. Count: 725 candles.
+Got CFX cache. Count: 725 candles.
+Got XLM cache. Count: 725 candles.
+Got BONK cache. Count: 725 candles.
+Got FLOKI cache. Count: 725 candles.
+Got AVAX cache. Count: 725 candles.
+Got DOGE cache. Count: 725 candles.
+Got LTC cache. Count: 725 candles.
+2026-03-19 21:00:14,165 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 21:00:14,165 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 21:00:14,165 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 21:00:14,165 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 21:00:14,165 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 21:00:14.165937 ---
+2026-03-19 21:00:14,165 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 21:00:14.165937 ---
+2026-03-19 21:00:14,398 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 21:00:14,398 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 21:00:14,398 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 21:00:14,398 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 21:00:14,399 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 21:00:14,399 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 726 candles.
+Updated LISTA cache. New count: 726 candles.
+2026-03-19 21:00:15,142 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:15,142 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:15,142 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 21:00:15,142 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 726 candles.
+Updated CFX cache. New count: 726 candles.
+2026-03-19 21:00:15,846 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:15,846 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:15,846 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 21:00:15,846 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 726 candles.
+2026-03-19 21:00:16,349 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:16,349 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:16,350 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 21:00:16,350 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 726 candles.
+Updated FLOKI cache. New count: 726 candles.
+2026-03-19 21:00:17,052 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:17,052 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:17,052 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 21:00:17,052 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 726 candles.
+Updated DOGE cache. New count: 726 candles.
+2026-03-19 21:00:17,769 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:17,769 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:17,769 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 21:00:17,769 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 726 candles.
+2026-03-19 21:00:18,244 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:18,244 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 21:00:18,471 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 21:00:18,471 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 21:00:18,472 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 21:00:18.472442 ---
+2026-03-19 21:00:18,472 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 21:00:18.472442 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 726 candles.
+Got LISTA cache. Count: 726 candles.
+Got XRP cache. Count: 726 candles.
+Got CFX cache. Count: 726 candles.
+Got XLM cache. Count: 726 candles.
+Got BONK cache. Count: 726 candles.
+Got FLOKI cache. Count: 726 candles.
+Got AVAX cache. Count: 726 candles.
+Got DOGE cache. Count: 726 candles.
+Got LTC cache. Count: 726 candles.
+2026-03-19 22:00:14,851 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 22:00:14,851 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 22:00:14,851 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 22:00:14,851 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 22:00:14,851 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 22:00:14.851781 ---
+2026-03-19 22:00:14,851 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 22:00:14.851781 ---
+2026-03-19 22:00:15,083 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 22:00:15,083 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 22:00:15,083 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 22:00:15,083 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 22:00:15,083 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 22:00:15,083 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 727 candles.
+Updated LISTA cache. New count: 727 candles.
+2026-03-19 22:00:15,788 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:15,788 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:15,788 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 22:00:15,788 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 727 candles.
+Updated CFX cache. New count: 727 candles.
+2026-03-19 22:00:16,490 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:16,490 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:16,490 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 22:00:16,490 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 727 candles.
+2026-03-19 22:00:16,983 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:16,983 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:16,983 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 22:00:16,983 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 727 candles.
+Updated FLOKI cache. New count: 727 candles.
+2026-03-19 22:00:17,714 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:17,714 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:17,714 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 22:00:17,714 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 727 candles.
+Updated DOGE cache. New count: 727 candles.
+2026-03-19 22:00:18,416 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:18,416 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:18,416 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 22:00:18,416 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 727 candles.
+2026-03-19 22:00:18,894 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:18,894 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 22:00:19,124 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 22:00:19,124 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 22:00:19,124 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 22:00:19.124933 ---
+2026-03-19 22:00:19,124 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 22:00:19.124933 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 727 candles.
+Got LISTA cache. Count: 727 candles.
+Got XRP cache. Count: 727 candles.
+Got CFX cache. Count: 727 candles.
+Got XLM cache. Count: 727 candles.
+Got BONK cache. Count: 727 candles.
+Got FLOKI cache. Count: 727 candles.
+Got AVAX cache. Count: 727 candles.
+Got DOGE cache. Count: 727 candles.
+Got LTC cache. Count: 727 candles.
+2026-03-19 23:00:14,501 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 23:00:14,501 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-19 23:00:14,501 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 23:00:14,501 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-19 23:00:14,501 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 23:00:14.501485 ---
+2026-03-19 23:00:14,501 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-19 23:00:14.501485 ---
+2026-03-19 23:00:14,733 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 23:00:14,733 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-19 23:00:14,733 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 23:00:14,733 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-19 23:00:14,733 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-19 23:00:14,733 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 728 candles.
+Updated LISTA cache. New count: 728 candles.
+2026-03-19 23:00:15,439 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:15,439 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:15,440 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-19 23:00:15,440 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 728 candles.
+Updated CFX cache. New count: 728 candles.
+2026-03-19 23:00:16,170 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:16,170 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:16,170 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-19 23:00:16,170 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 728 candles.
+2026-03-19 23:00:16,633 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:16,633 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:16,633 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-19 23:00:16,633 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 728 candles.
+Updated FLOKI cache. New count: 728 candles.
+2026-03-19 23:00:17,365 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:17,365 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:17,365 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-19 23:00:17,365 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 728 candles.
+Updated DOGE cache. New count: 728 candles.
+2026-03-19 23:00:18,052 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:18,052 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:18,052 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-19 23:00:18,052 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 728 candles.
+2026-03-19 23:00:18,527 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:18,527 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-19 23:00:18,941 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 23:00:18,941 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-19 23:00:18,941 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 23:00:18.941683 ---
+2026-03-19 23:00:18,941 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-19 23:00:18.941683 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 728 candles.
+Got LISTA cache. Count: 728 candles.
+Got XRP cache. Count: 728 candles.
+Got CFX cache. Count: 728 candles.
+Got XLM cache. Count: 728 candles.
+Got BONK cache. Count: 728 candles.
+Got FLOKI cache. Count: 728 candles.
+Got AVAX cache. Count: 728 candles.
+Got DOGE cache. Count: 728 candles.
+Got LTC cache. Count: 728 candles.
+2026-03-20 00:00:14,496 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-20 00:00:14,496 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-20 00:00:14,496 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-20 00:00:14,496 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-20 00:00:14,496 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-20 00:00:14.496786 ---
+2026-03-20 00:00:14,496 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-20 00:00:14.496786 ---
+2026-03-20 00:00:14,729 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-20 00:00:14,729 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-20 00:00:14,729 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-20 00:00:14,729 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-20 00:00:14,729 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-20 00:00:14,729 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 729 candles.
+Updated LISTA cache. New count: 729 candles.
+2026-03-20 00:00:15,438 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:15,438 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:15,438 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-20 00:00:15,438 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 729 candles.
+Updated CFX cache. New count: 729 candles.
+2026-03-20 00:00:16,157 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:16,157 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:16,157 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-20 00:00:16,157 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 729 candles.
+2026-03-20 00:00:16,621 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:16,621 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:16,622 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-20 00:00:16,622 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 729 candles.
+Updated FLOKI cache. New count: 729 candles.
+2026-03-20 00:00:17,339 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:17,339 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:17,339 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-20 00:00:17,339 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 729 candles.
+Updated DOGE cache. New count: 729 candles.
+2026-03-20 00:00:18,050 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:18,050 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:18,050 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-20 00:00:18,050 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 729 candles.
+2026-03-20 00:00:18,529 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:18,529 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-20 00:00:18,759 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-20 00:00:18,759 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-20 00:00:18,760 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-20 00:00:18.760222 ---
+2026-03-20 00:00:18,760 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-20 00:00:18.760222 ---
+/home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/logs/logs.txt
+Loading cache from disk...
+Got CAKE cache. Count: 729 candles.
+Got LISTA cache. Count: 729 candles.
+Got XRP cache. Count: 729 candles.
+Got CFX cache. Count: 729 candles.
+Got XLM cache. Count: 729 candles.
+Got BONK cache. Count: 729 candles.
+Got FLOKI cache. Count: 729 candles.
+Got AVAX cache. Count: 729 candles.
+Got DOGE cache. Count: 729 candles.
+Got LTC cache. Count: 729 candles.
+2026-03-20 01:00:14,528 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-20 01:00:14,528 - trading_bot - INFO - Initialized precisions for 67 coins.
+2026-03-20 01:00:14,529 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-20 01:00:14,529 - trading_bot - INFO - Loaded config from /home/ssm-user/ComroomCapital/comroom_capital_quant_trading_hackathon/bot/execution/../config/config.json: 6 pairs found.
+2026-03-20 01:00:14,529 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-20 01:00:14.529421 ---
+2026-03-20 01:00:14,529 - trading_bot - INFO - --- Starting Strategy Run at 2026-03-20 01:00:14.529421 ---
+2026-03-20 01:00:14,757 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-20 01:00:14,757 - trading_bot - INFO - Initial held coins: [('USD', 49529.8)]
+2026-03-20 01:00:14,757 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-20 01:00:14,757 - trading_bot - INFO - Initial portfolio value: $49,529.80 USD
+2026-03-20 01:00:14,757 - trading_bot - INFO - Processing pair: CAKE-LISTA
+2026-03-20 01:00:14,757 - trading_bot - INFO - Processing pair: CAKE-LISTA
+Updated CAKE cache. New count: 730 candles.
+Updated LISTA cache. New count: 730 candles.
+2026-03-20 01:00:15,465 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:15,465 - trading_bot - WARNING - Data for CAKE-LISTA doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:15,465 - trading_bot - INFO - Processing pair: XRP-CFX
+2026-03-20 01:00:15,465 - trading_bot - INFO - Processing pair: XRP-CFX
+Updated XRP cache. New count: 730 candles.
+Updated CFX cache. New count: 730 candles.
+2026-03-20 01:00:16,192 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:16,192 - trading_bot - WARNING - Data for XRP-CFX doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:16,192 - trading_bot - INFO - Processing pair: XRP-XLM
+2026-03-20 01:00:16,192 - trading_bot - INFO - Processing pair: XRP-XLM
+Updated XLM cache. New count: 730 candles.
+2026-03-20 01:00:16,667 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:16,667 - trading_bot - WARNING - Data for XRP-XLM doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:16,667 - trading_bot - INFO - Processing pair: BONK-FLOKI
+2026-03-20 01:00:16,667 - trading_bot - INFO - Processing pair: BONK-FLOKI
+Updated BONK cache. New count: 730 candles.
+Updated FLOKI cache. New count: 730 candles.
+2026-03-20 01:00:17,382 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:17,382 - trading_bot - WARNING - Data for BONK-FLOKI doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:17,382 - trading_bot - INFO - Processing pair: AVAX-DOGE
+2026-03-20 01:00:17,382 - trading_bot - INFO - Processing pair: AVAX-DOGE
+Updated AVAX cache. New count: 730 candles.
+Updated DOGE cache. New count: 730 candles.
+2026-03-20 01:00:18,079 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:18,079 - trading_bot - WARNING - Data for AVAX-DOGE doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:18,079 - trading_bot - INFO - Processing pair: XRP-LTC
+2026-03-20 01:00:18,079 - trading_bot - INFO - Processing pair: XRP-LTC
+Updated LTC cache. New count: 730 candles.
+2026-03-20 01:00:18,582 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:18,582 - trading_bot - WARNING - Data for XRP-LTC doesn't have enough candles! (required: 2160)
+2026-03-20 01:00:18,811 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-20 01:00:18,811 - trading_bot - INFO - Ending held coins: [('USD', 49529.8)]
+2026-03-20 01:00:18,811 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-20 01:00:18.811791 ---
+2026-03-20 01:00:18,811 - trading_bot - INFO - --- Strategy Run Completed at 2026-03-20 01:00:18.811791 ---
