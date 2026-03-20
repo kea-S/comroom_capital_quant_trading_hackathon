@@ -14,8 +14,7 @@
     },
     {
       "coin_a": "XRP",
-      "coin_b": "CFX",
-      "window_size": 2160,
+      "coin_b": "CFX""window_size": 2160,
       "allocated_capital": 4000
     },
     {
