@@ -11,8 +11,8 @@ load_dotenv()
 class APIClient:
     def __init__(self):
         self.base_url = "https://mock-api.roostoo.com"
-        self.api_key = os.getenv("ROUND1_API_KEY")
-        self.secret_key = os.getenv("ROUND1_API_SECRET")
+        self.api_key = os.getenv("TESTING_API_KEY")
+        self.secret_key = os.getenv("TESTING_API_SECRET")
 
     def _get_timestamp(self):
         """Return a 13-digit millisecond timestamp as string."""
