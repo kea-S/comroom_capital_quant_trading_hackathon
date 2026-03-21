@@ -10,61 +10,61 @@
       "coin_a": "XRP",
       "coin_b": "CFX",
       "window_size": 720,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "ADA",
       "coin_b": "AVAX",
       "window_size": 720,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "CAKE",
       "coin_b": "LISTA",
       "window_size": 720,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "LTC",
       "coin_b": "XLM",
       "window_size": 720,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "XRP",
       "coin_b": "XLM",
       "window_size": 720,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "DOT",
       "coin_b": "APT",
       "window_size": 720,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "BONK",
       "coin_b": "FLOKI",
       "window_size": 360,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "AVAX",
       "coin_b": "DOGE",
       "window_size": 720,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "PENDLE",
       "coin_b": "EIGEN",
       "window_size": 360,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     },
     {
       "coin_a": "XRP",
       "coin_b": "LTC",
       "window_size": 720,
-      "allocated_capital": 100000
+      "allocated_capital": 1000
     }
   ]
 }
